@@ -1,7 +1,9 @@
-import os
+import os,sys
 
 from flask import Flask,url_for,render_template
 from flask_sqlalchemy import SQLAlchemy
+
+import click
 
 WIN = sys.platform.startswith('win')
 if WIN:
@@ -17,7 +19,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # models 数据库
-class User(db.model):
+class User(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(20))
 
@@ -39,3 +41,15 @@ def index():
         {"title":"三人行","year":"2016"},
     ]
     return render_template('index.html',name=name,movies=movies)
+
+
+# 自定义命令
+@app.cli.command()  # 注册为命令
+@click.option('--drop',is_flag=True,help="先删除再创建")
+def initdb(drop):
+    if drop:
+        db.drop_all()
+    db.create_all()
+    click.echo("初始化数据库完成")
+
+
