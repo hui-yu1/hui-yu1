@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
 </head>
 <body>
-    <h2>
+    <h3>
         <img src="{{ url_for('static',filename='img/p2.jpg') }}" alt="头像" class="avatar">
         {{ name }}
-    </h2>
+    </h3>
     {# 过滤器 #}
     <p>总共{{ movies|length }}个电影</p>
-    <ul>
+    <ul class="movie_list">
         {% for movie in movies %}
-        <li>{{ movie.title }}</li><li>{{ movie.year }}</li>
+        <li>{{ movie.title }} <span class="sj">发布时间：{{ movie.year }}</span></li>
         {% endfor %}
     </ul>
     <footer>
