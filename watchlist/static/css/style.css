@@ -65,16 +65,36 @@ nav li a{
     text-align: center;
     padding: 8px 12px;
     text-decoration: none;
+    float:left;
 }
+
 
 nav li a:hover{
     background-color: rgb(114, 117, 117);
+}
+
+.ay1{
+    position: absolute;
+    right:280px;
+}
+
+.ay2{
+    position: absolute;
+    right:230px;
+}
+
+.ay3{
+    position: absolute;
+    right:330px;
 }
 
 .float-right{
     float: right;
 }
 
+.float-left{
+    float: left;
+}
 
 .btn{
     font-size:12px;

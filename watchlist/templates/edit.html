@@ -7,6 +7,10 @@
         电影名称<input type="text" name="title" required autocomplete="off">
     电影年份<input type="text" name="year" required autocomplete="off">
     <input class="btn" type="submit" value="编辑信息">
+    <!-- flash消息 -->
+    {% for massage in get_flashed_messages() %}
+        <span class="alert">{{ massage }}</span>
+    {% endfor %}
     </form>
 
 {% endblock %}
