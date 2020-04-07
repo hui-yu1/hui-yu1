@@ -36,6 +36,107 @@ footer{
     background-color: #f0e6e6;
 }
 
+.movie_list a{
+    text-decoration: none;
+    color: black;
+}
+
 .sj{
     float: right;
+    position: relative;
+    right:130px;
+}
+
+nav ul{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    background-color: #8b8888;
+}
+
+nav li{
+    float: left;
+}
+
+nav li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+nav li a:hover{
+    background-color: rgb(114, 117, 117);
+}
+
+.float-right{
+    float: right;
+}
+
+
+.btn{
+    font-size:12px;
+    padding:3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 1px;
+    border-radius: 5px;
+}
+
+.btn:hover{
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.btn1{
+    font-size:12px;
+    padding:3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: none;
+    color: black;
+    border: 1px;
+    border-radius: 5px;
+    position: absolute;
+    right: 300px;
+}
+
+.btn1:hover{
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.btn2{
+    font-size:12px;
+    padding:3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: none;
+    color: black;
+    border: 1px;
+    border-radius: 5px;
+    position: absolute;
+    right: 250px;
+}
+
+.btn2:hover{
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.alert{
+    margin-left: 10px;
+    font-size: 15px;
+    color: red;
+    font-family: cursive;
 }

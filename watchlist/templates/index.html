@@ -1,25 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>{{ name }}'watchlist</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
-</head>
-<body>
-    <h3>
-        <img src="{{ url_for('static',filename='img/p2.jpg') }}" alt="头像" class="avatar">
-        {{ user.name }}
-    </h3>
-    {# 过滤器 #}
-    <p>总共{{ movies|length }}个电影</p>
-    <ul class="movie_list">
-        {% for movie in movies %}
-        <li>{{ movie.title }} <span class="sj">发布时间：{{ movie.year }}</span></li>
-        {% endfor %}
-    </ul>
-    <footer>
-        <small>&copy;2020&nbsp;&nbsp;&nbsp; <a href="">1903c</a></small>
-    </footer>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<p>总共{{ movies|length }}个电影</p>
+<!-- 添加电影的表单 -->
+<form action="" method="post">
+    电影名称<input type="text" name="title" required autocomplete="off">
+    电影年份<input type="text" name="year" required autocomplete="off">
+    <input class="btn" type="submit" value="添加">
+    <!-- flash消息 -->
+    {% for massage in get_flashed_messages() %}
+        <span class="alert">{{ massage }}</span>
+    {% endfor %}
+</form>
+
+<ul class="movie_list">
+    {% for movie in movies %}
+        <li>
+            <a href="http://v.baidu.com/v?word={{ movie.title }}&ct=301989888&rn=67&pn=0&db=0&s=0&fbl=800&ie=utf-8&oq={{ movie.title }}=3&rsp=0">
+                {{ movie.title }} 
+            </a>
+            <span class="sj">发布时间：{{ movie.year }}</span>
+           
+            <span>
+                <a class="btn1" href="{{ url_for('edit',movie_id=movie.id) }}">编辑</a>
+            </span>
+            
+            <span class="float-right">
+                <form action="{{ url_for('delete',movie_id=movie.id) }}" method="POST">
+                    <input class="btn2" type="submit" name="delete" value="删除" onclick="return confim('是否删除？')" >
+                </form>
+            </span>
+        </li> 
+    {% endfor %}
+</ul>
+{% endblock %}
