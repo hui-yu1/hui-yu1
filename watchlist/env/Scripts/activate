@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\lions\Desktop\flask_web\day1\watchlist\env"
+VIRTUAL_ENV="C:\Users\lions\Desktop\flask_web\watchlist\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
