@@ -52,13 +52,19 @@
                 </div>
             </li>
             <li>
-                <div class="removed">
+                <div class="checkbox">
                     <label for="">
                         <input class="js-item" type="checkbox">大剑
                     </label>
                 </div>
             </li>
         </ul>
+        <!-- 修改标题 -->
+        <div class="footer">
+            <hr>
+            <span>修改标题</span>
+            <input type="text" class="js-change-title" value="购物清单">
+        </div>
     </div>
 </body>
 
@@ -76,12 +82,26 @@
             $li = $('<li>').appendTo($ul)
             $div = $('<div>').addClass('checkbox').appendTo($li)
             $label = $('<label>').appendTo($div)
-            $('<input>').addClass('js-item').attr('type','checkbox').appendTo($label)
+            $('<input>').addClass('js-item').attr('type','checkbox').appendTo($label).click(toggleRemoved)
             
             $label.append(value)
         }
 
+        function toggleRemoved(ev){
+            // 获取当前点击的对象  closest遍历input的父元素
+            $(ev.currentTarget).closest('li').toggleClass('removed')
+        }
+
+        function onChangeTitle(){
+            $('h2').text($(".js-change-title").val())
+        }
+
+        // 添加商品
         $(".js-add").click(onAdd)
+        // 商品点击
+        $('.js-item').click(toggleRemoved)
+        // 修改标题
+        $('.js-change-title').keyup(onChangeTitle)
     })
 </script>
 
