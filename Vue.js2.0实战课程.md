@@ -50,3 +50,51 @@ v-on  事件绑定
 
 ## 三、动手写一个TODOList应用
 
+设置一个倒计时，比如说初始时间是25分钟，进入work（工作）状态，25分钟到点后就是一个5分钟的rest（休息）状态，如此反复
+
+
+
+## 四、Vue2.X工程化环境搭建
+
+1. 下载nodejs：https://nodejs.org/en/，npm包管理工具
+
+   检查是否已经安装，cmd中输入node -v检查node ，npm -v 检查npm
+
+2. 用管理员身份打开cmd或者cmder或者gitbash：运行npm install -g vue-cli，vue-cli是vue的脚手架工具  ，Mac Terminal中增强权限sudo
+
+   如果之前安装过，可以先卸载 vue-cli：npm uninstall -g vue-cli
+
+   输入vue --version检查是否安装成功
+
+3. 初始化项目  vue init webpack practise
+
+   进入到项目中  cd practise
+
+   运行项目  npm run dev
+
+   
+
+4. 启动单元测试：npm run unit
+
+5. 启动端对端测试e2e：npm run e2e，先搁置
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
