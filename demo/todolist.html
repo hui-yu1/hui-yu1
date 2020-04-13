@@ -11,23 +11,14 @@
 <body>
 
     <div class="container" id="app">
-        <h2>
-            <span>倒计时</span>
-            <button class="btn btn-lg btn-primary" :disabled=" state === 'started' && state !== 'started' " v-on:click="stop">
-                <i class="glyphicon glyphicon-stop"></i>
-            </button>
-            <button class="btn btn-lg btn-primary" :disabled=" state !== 'started' " v-on:click="pause">
-                <i class="glyphicon glyphicon-pause"></i>
-            </button>
-            <button class="btn btn-lg btn-primary" :disabled=" state === 'started' " v-on:click="start">
-                <i class="glyphicon glyphicon-play"></i>
-            </button>
-        </h2>
+
+        <icon-component></icon-component>
+            
         <h4>{{ workState }}</h4>
         <div class="well">
-            <div class="dao-timer">
-                <time-component></time-component>
-            </div>
+
+            <time-component></time-component>
+
         </div>
     </div>
 
@@ -35,7 +26,6 @@
 
 <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
 <script>
-
     // ES6定义常量 const
     const WORK_STATES = {
          WORK:'工作中——',
@@ -52,14 +42,14 @@
     }
 
     var data = {
-        minute:WORKING_TIME_LENGTH_IN_MINUTES,
+            minute:WORKING_TIME_LENGTH_IN_MINUTES,
             second:0,
             workState:WORK_STATES.WORK,
             timestamp:0,
             state:STATES.STOPPED,
     }
 
-    // 创建组件 - 图标
+    // 创建组件 - 停止
     var IconComponent = Vue.extend({
         data:function(){
             return data;
@@ -68,11 +58,7 @@
             start:function(){
                 this.state = STATES.STARTED
                 this._tick()
-                this.interval = setInterval(this._tick,1000);
-            },
-            pause:function(){
-                this.state = STATES.PAUSE
-                clearInterval(this.interval)
+                this.interval = setInterval(this._tick,1000)
             },
             stop:function(){
                 this.state = STATES.STOPPED
@@ -80,6 +66,10 @@
                 this.workState = WORK_STATES.WORK
                 this.minute = WORKING_TIME_LENGTH_IN_MINUTES
                 this.second = 0
+            },
+            pause:function(){
+                this.state = STATES.PAUSE
+                clearInterval(this.interval)
             },
             _tick:function(){
                 // second不是0，secnd减1
@@ -104,11 +94,26 @@
             }
         },
         template:
-            
+            '<h2>'+
+                '<span>倒计时</span> &nbsp;'+
+                
+                '<button class="btn btn-lg btn-primary" :disabled=" state === \'started\' && state !== \'started\' " v-on:click="stop">'+
+                    '<i class="glyphicon glyphicon-stop"></i>'+
+                '</button> &nbsp;'+
+
+                '<button class="btn btn-lg btn-primary" :disabled=" state !== \'started\' " v-on:click="pause">'+
+                    '<i class="glyphicon glyphicon-pause"></i>'+
+                '</button> &nbsp;'+
+
+                '<button class="btn btn-lg btn-primary" :disabled=" state === \'started\' " v-on:click="start">'+
+                    '<i class="glyphicon glyphicon-play"></i>'+
+                '</button>'+
+            '</h2>'
     })
 
+
     // 创建组件 - 时间
-    var Timecomponent = Vue.extend({
+    var TimeComponent = Vue.extend({
         data:function(){
             return data;
         },
@@ -127,8 +132,10 @@
                 return this.second;
             }
         },
-        template:'<span>{{ min }}</span>:<span>{{ sec }}</span>'
-            
+        template:
+            '<div class="dao-timer">'+
+            '<span>{{ min }}</span>:<span>{{ sec }}</span>'+
+            '</div>'
     })
 
     // 注册组件 - 图标
@@ -139,7 +146,7 @@
 
     new Vue({
         el:"#app",
-        data:data,  
+        data:data,
     })
 </script>
 

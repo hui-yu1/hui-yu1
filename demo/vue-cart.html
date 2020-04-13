@@ -38,19 +38,27 @@
             <span>修改标题</span>
             <change-title-component></change-title-component>
         </div>
+        <div>
+            {{ item }}的平方是<span v-square="item"></span>
+        </div>
     </div>
 </body>
 
 <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
 <script>
-    
+    // 自定义指令square，
+    Vue.directive('square', function (el, binding) {
+            el.innerHTML = Math.pow(binding.value,2)
+    })
+
     var data = {
         items:[
             {text:'反曲弓',checked:false},
             {text:'金铲子',checked:false},
             {text:'锁子甲',checked:false}],
         title:"购物清单",
-        newItem:""
+        newItem:"",
+        item:10,
     }
     // 创建组件 - 列表
     var ItemsComponents = Vue.extend({
@@ -70,7 +78,7 @@
     })
 
     // 创建组件 - 改变标题
-    var ChangeTitlecomponent = Vue.extend({
+    var ChangeTitleComponent = Vue.extend({
         data:function(){
             return data;
         },
@@ -78,7 +86,7 @@
     })
 
     // 创建组件 - 添加到购物车
-    var AddItemcomponent = Vue.extend({
+    var AddItemComponent = Vue.extend({
         data:function(){
             return data;
         },
@@ -108,10 +116,10 @@
     Vue.component('items-component',ItemsComponents)
 
     // 注册组件 - 改变标题
-    Vue.component('change-title-component',ChangeTitlecomponent)
+    Vue.component('change-title-component',ChangeTitleComponent)
 
     // 注册组件 - 添加到购物车
-    Vue.component('add-item-component',AddItemcomponent)
+    Vue.component('add-item-component',AddItemComponent)
 
     new Vue({
         el:"#app",
