@@ -6,7 +6,7 @@ module.exports = {
     
 
     browser
-      .url(devServer)
+      .url('http://localhost:8080')
       .waitForElementVisible('#app', 5000)
 
       .end()
