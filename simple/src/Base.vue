@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 /* reset重置样式 */
 html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
 header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
@@ -53,6 +53,12 @@ body{background:#fff;}
 a,a:hover{color:#333;}
 
 /* Base样式 */
+body{
+  background: #f0f2f5;
+  font-size:14px;
+  color: #444;
+  width:100%;
+}
 .app-head{
   background: #363636;
   color:white;
@@ -86,7 +92,7 @@ a,a:hover{color:#333;}
   line-height: 80px;
   width: 100%;
   background: #e3e4e8;
-  margin-top:30;
+  margin-top:30px;
 }
 .app-content{
   width: 1200px;
