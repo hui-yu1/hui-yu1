@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端HTML,CSS,JacaScript体验</title>
+    <style>
+        .box{
+            width:200px;
+            height: 200px;
+            text-align: center;
+            color:rgb(47, 104, 141);
+            font-size: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box" id="box">
+        绘余
+    </div>
+
+    <div class=container id="container">
+        也许
+    </div>
+
+</body>
+
+<script>
+    // 获取HTML元素
+    var oBox = document.getElementById('box')
+    // 添加点击事件
+    oBox.onclick = function(){
+        alert('ok')
+    }
+</script>
+
+</html>

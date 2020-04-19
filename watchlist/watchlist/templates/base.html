@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>{{ current_user.name }}'watchlist</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+    <h3>
+        {% if current_user.is_authenticated %}
+        <img src="{{ url_for('static',filename='img/p2.jpg') }}" alt="头像" class="avatar">
+        {% for i in user %}
+            {{ i.name }}
+        {% endfor %}
+        {% endif %}
+    </h3>
+    
+
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ url_for('index') }}">首页</a>
+                <a href="{{ url_for('login') }}" class="ay1">登录</a>
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}" class="ay2">登出</a>
+                <a href="{{ url_for('settings') }}" class="ay3">设置</a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+    
+    <footer>
+        <small>&copy;2020&nbsp;&nbsp;&nbsp; <a href="">1903c</a></small>
+    </footer>
+</body>
+</html>

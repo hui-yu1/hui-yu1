@@ -1,0 +1,13 @@
+<!-- 404错误页面 -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul class="movie_list">
+        
+        <li>
+            页面走丢了~~~ 404
+            <a href="{{ url_for('index') }}">主页</a>
+        </li>
+        
+    </ul>
+{% endblock %}
